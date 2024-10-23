@@ -1,0 +1,10 @@
+<h1><%= @task.title %></h1>
+
+<p><%= @task.description %></p>
+
+<ul>
+  <li>Due Time: <%= @task.due_date %></li>
+  <li>Status: <%= @task.status %></li>
+</ul>
+
+<p><%= link_to "Back", root_path %>
