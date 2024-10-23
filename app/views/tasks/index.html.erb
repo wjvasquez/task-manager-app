@@ -10,3 +10,5 @@
     <li><%= link_to task.title, task_path(task) %> - <%= task.status %></li>
   <% end %>
 </ul>
+
+<%= link_to "Create Task", new_task_path %>
