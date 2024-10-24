@@ -7,4 +7,5 @@
   <li>Status: <%= @task.status %></li>
 </ul>
 
-<p><%= link_to "Back", root_path %>
+<p><%= link_to "Edit", edit_task_path(@task) %></p>
+<p><%= link_to "Back", root_path %></p>
