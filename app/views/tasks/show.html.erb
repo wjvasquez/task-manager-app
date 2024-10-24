@@ -7,9 +7,29 @@
   <li>Status: <%= @task.status %></li>
 </ul>
 
+<% if @task.is_pending? %>
+  <p>
+    <%= link_to "Task Completed", update_status_task_path(@task, status: "completed"),
+                  data: {
+                    turbo_method: :patch,
+                    turbo_confirm: "Are you sure to mark this task as Completed?"
+                  } %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to "Mark as Pending", update_status_task_path(@task, status: "pending"),
+                  data: {
+                    turbo_method: :patch,
+                    turbo_confirm: "Are you sure to mark this task as Pending, again?"
+                  } %>
+  </p>
+<% end %>
+
 <p><%= link_to "Edit", edit_task_path(@task) %></p>
-<p><%= link_to "Delete", task_path(@task), data: {
+<p>
+  <%= link_to "Delete", task_path(@task), data: {
                   turbo_method: :delete,
                   turbo_confirm: "Deleting task, are you sure?"
                 } %>
+</p>
 <p><%= link_to "Back", root_path %></p>

@@ -10,6 +10,10 @@ class Task < ApplicationRecord
 
   validate :due_date_is_future_date
 
+  def is_pending?
+    status == "pending"
+  end
+
   private
 
   def due_date_is_future_date

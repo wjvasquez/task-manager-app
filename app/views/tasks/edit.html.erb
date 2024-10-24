@@ -26,14 +26,8 @@
   </div>
 
   <div>
-    <%= form.label :status %><br>
-    <%= form.text_field :status %>
-    <% @task.errors.full_messages_for(:status).each do |message| %>
-      <%= message %>
-    <% end %>
-  </div>
-
-  <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= link_to "Back", root_path %>

@@ -44,6 +44,16 @@ class TasksController < ApplicationController
     redirect_to root_path, notice: "Task was successfully deleted.", status: :see_other
   end
 
+  def update_status
+    @task = current_user.tasks.find(params[:id])
+
+    if @task.update(status: params[:status])
+      redirect_to @task, notice: "Task status changed successfully!"
+    else
+      redirect_to @task, alert: "Unable to chaged the task status!"
+    end
+  end
+
   private
 
   def task_params
