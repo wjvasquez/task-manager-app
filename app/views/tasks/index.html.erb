@@ -5,10 +5,27 @@
 
 <h1>Tasks Dashboard</h1>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task_path(task) %> - <%= task.status %></li>
-  <% end %>
-</ul>
+<%= render "search_form" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th><%= sort_link(@q, :due_date, "Due Date", default_order: :desc) %></th>
+      <th>Status</th>
+      <th>Manage Task</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.due_date %></td>
+        <td><%= task.status %></td>
+        <td><%= link_to "Details", task_path(task) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "Create Task", new_task_path %>

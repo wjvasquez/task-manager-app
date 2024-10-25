@@ -14,6 +14,15 @@ class Task < ApplicationRecord
     status == "pending"
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["status", "title", "status", "due_date"]
+  end
+
+  # this method allow to sort the tasks (Rails recommendation).
+  def self.ransackable_associations(auth_object = nil)
+    ["user"]
+  end
+
   private
 
   def due_date_is_future_date

@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tasks = current_user.tasks
+    @q = current_user.tasks.ransack(params[:q])
+    @tasks = @q.result.order(due_date: :asc)
   end
 
   def show

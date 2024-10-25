@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+50.times do |x|
+  random_user = User.all.sample
+  random_user.tasks.create(
+    title: Faker::Book.title,
+    description: Faker::Fantasy::Tolkien.poem,
+    due_date: Faker::Date.forward(days: rand(200))
+  )
+end
